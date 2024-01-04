@@ -99,19 +99,6 @@
             }
         }
 
-        .like-button {
-            cursor: pointer;
-            background: none;
-            border: none;
-            font-size: 1.2em;
-            color: #e74c3c; /* Heart color */
-            outline: none;
-        }
-
-        .like-counter {
-            display: inline-block;
-            margin-left: 5px;
-            color: #e74c3c; /* Like counter color */
     </style>
     <title>Blog</title>
 </head>
@@ -126,8 +113,6 @@
             <h2>Friend or Foe ?</h2>
             <button class="read-button" onclick="expandBlog('b1')">Read</button>
             <div class="expanded-content" style="display: none;">
-                <button class="like-button" onclick="likeBlog('b4')">&#10084;</button>
-            <span class="like-counter" id="likeCounter_b4">0</span>
                 <p>
 <b>Introduction:</b>
 
@@ -164,8 +149,6 @@ Friendship, with its highs and lows, is a tapestry of experiences that shape our
             <h2>Three Mistakes of my Life</h2>
             <button class="read-button" onclick="expandBlog('b2')">Read</button>
             <div class="expanded-content" style="display: none;">
-                 <button class="like-button" onclick="likeBlog('b4')">&#10084;</button>
-            <span class="like-counter" id="likeCounter_b4">0</span>
                 <p><b>Introduction:</b>
 
 Life's journey is a continual evolution, marked by experiences that shape our understanding and approach. As I reflect on my own path, three pivotal mistakes stand out, each contributing to the evolving narrative of my life.
@@ -195,8 +178,6 @@ In acknowledging these mistakes, I embrace the evolution of my wisdom. Each miss
             <h2>Dreams Come True with Hard Work.?</h2>
             <button class="read-button" onclick="expandBlog('b3')">Read</button>
             <div class="expanded-content" style="display: none;">
-                 <button class="like-button" onclick="likeBlog('b4')">&#10084;</button>
-            <span class="like-counter" id="likeCounter_b4">0</span>
                 <p><b>Introduction:</b>
 
 Dreams are the seeds of our aspirations, but their transformation into reality requires more than mere wishful thinking. In this blog, we delve into the profound truth that dreams, those shimmering beacons of our desires, only come to fruition through the unwavering commitment and tenacity of hard work.
@@ -234,8 +215,6 @@ Dreams, no matter how grand, remain confined to the realm of fantasy without the
             <h2>Depression, Mental Health, Loneliness</h2>
             <button class="read-button" onclick="expandBlog('b4')">Read</button>
             <div class="expanded-content" style="display: none;">
-                 <button class="like-button" onclick="likeBlog('b4')">&#10084;</button>
-            <span class="like-counter" id="likeCounter_b4">0</span>
                 <p><b>Introduction:</b>
 
 In the often-muted discourse surrounding mental health, depression, loneliness, and the grim reality of suicide stand as somber reminders of the urgent need for collective awareness and action. As we delve into this complex narrative, our aim is not only to empathize but also to confront the harsh statistics that highlight the gravity of the situation.
@@ -266,7 +245,9 @@ Communities play a pivotal role in creating an environment where mental health i
 
 <b>Conclusion:</b>
 
-In confronting the stark reality of depression, loneliness, and the tragic impact of suicide, we stand at a critical juncture. The statistics are not just numbers; they represent real individuals grappling with pain and isolation. By acknowledging the challenges, fostering open conversations, increasing accessibility to professional support, and building resilient communities, we embark on a collective journey toward healing. Let us transform the silence into a powerful chorus of compassion and advocacy, ensuring that no one fights these battles alone. Together, we can create a world where mental health is a priority, and every individual finds the support and understanding needed to navigate the complexities of the human experience.</p>
+In confronting the stark reality of depression, loneliness, and the tragic impact of suicide, we stand at a critical juncture. The statistics are not just numbers; they represent real individuals grappling with pain and isolation. By acknowledging the challenges, fostering open conversations, increasing accessibility to professional support, and building resilient communities, we embark on a collective journey toward healing. Let us transform the silence into a powerful chorus of compassion and advocacy, ensuring that no one fights these battles alone. Together, we can create a world where mental health is a priority, and every individual finds the support and understanding needed to navigate the complexities of the human experience.
+
+<b><i>By Subham</i></b></p>
                 <button class="close-button" onclick="closeBlog('b4')">Close</button>
             </div>
         </div>
@@ -282,79 +263,6 @@ In confronting the stark reality of depression, loneliness, and the tragic impac
             document.getElementById(blogId).classList.remove('expanded');
             document.getElementById(blogId).getElementsByClassName('expanded-content')[0].style.display = 'none';
         }
-        // Initialize like counters dynamically based on blog covers
-        var likeCounters = {};
-        var blogIds = document.querySelectorAll('.blog');
-        blogIds.forEach(function (blog) {
-            var blogId = blog.id;
-            likeCounters[blogId] = 0;
-        });
-
-        // Retrieve like counts from Gist
-        function retrieveLikes() {
-            const gistId = 'LifeInFrames'; // Your Gist ID
-            const accessToken = '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'; // Your GitHub access token
-
-            fetch(`https://api.github.com/gists/${gistId}`, {
-                headers: {
-                    'Authorization': `token ${accessToken}`,
-                },
-            })
-                .then(response => response.json())
-                .then(data => {
-                    // Update like counters with retrieved data
-                    likeCounters = data.files.likes ? JSON.parse(data.files.likes.content) : {};
-                    updateLikeCounters();
-                })
-                .catch(error => console.error('Error retrieving likes:', error));
-        }
-
-        // Update like counters on the page
-        function updateLikeCounters() {
-            for (const blogId in likeCounters) {
-                if (likeCounters.hasOwnProperty(blogId)) {
-                    document.getElementById('likeCounter_' + blogId).textContent = likeCounters[blogId];
-                }
-            }
-        }
-
-        // Save like counts to Gist
-        function saveLikes() {
-            const gistId = 'LifeInFrames'; // Your Gist ID
-            const accessToken = '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'; // Your GitHub access token
-
-            fetch(`https://api.github.com/gists/${gistId}`, {
-                method: 'PATCH',
-                headers: {
-                    'Authorization': `token ${accessToken}`,
-                    'Content-Type': 'application/json',
-                },
-                body: JSON.stringify({
-                    files: {
-                        likes: {
-                            content: JSON.stringify(likeCounters),
-                        },
-                    },
-                }),
-            })
-                .then(response => response.json())
-                .then(data => console.log('Likes saved successfully:', data))
-                .catch(error => console.error('Error saving likes:', error));
-        }
-
-        // Initialize on page load
-        retrieveLikes();
-
-        // Like button click event handler
-        function likeBlog(blogId) {
-            // Increment the like counter
-            likeCounters[blogId]++;
-
-            // Update the like counter display
-            document.getElementById('likeCounter_' + blogId).textContent = likeCounters[blogId];
-
-            // Save like counts to Gist
-            saveLikes();
     </script>
 </body>
 </html>
