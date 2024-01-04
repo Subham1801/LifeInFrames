@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Smedia</title>
+  <title>Life In Frames</title>
   <style>
     body {
       margin: 0;
@@ -28,6 +28,23 @@
     }
 
     #centerText:hover {
+      transform: scale(1.1);
+    }
+
+    #subTitle {
+      font-size: 20px;
+      margin-top: 10px;
+      text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.8);
+    }
+
+    #belowcenterText {
+      font-size: 18px;
+      margin-top: 10px;
+      text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.8);
+      transition: transform 0.3s;
+    }
+
+    #belowcenterText:hover {
       transform: scale(1.1);
     }
 
@@ -75,6 +92,14 @@
         margin-top: 10vh;
       }
 
+      #subTitle {
+        font-size: 18px;
+      }
+
+      #belowcenterText {
+        font-size: 16px;
+      }
+
       #dateTime {
         font-size: 18px;
       }
@@ -107,18 +132,22 @@
 
   <div id="noticeBar">
     <!-- Add your dynamic text here or change it later in the code -->
-    File, Photos and Videos button is down for server issue.
+    File, Photos and Videos buttons are down due to server issue.
   </div>
 
-  <div id="centerText">Smedia</div>
+  <div id="centerText">
+    Life In Frames
+    <div id="subTitle">Enhance Friendship !!</div>
+  </div>
+  <div id="belowcenterText">by Subham</div>
 
   <div id="dateTime"></div>
 
   <div id="bottomButtons">
     <button class="button" onclick="openFilePage('#')">File</button>
     <button class="button" onclick="openBlogPage('blog.html')">Blogs</button>
-    <button class="button">Video</button>
-    <button class="button">Image</button>
+    <button class="button">Videos</button>
+    <button class="button">Images</button>
   </div>
 
   <script>
@@ -140,7 +169,6 @@
     function openBlogPage(blogPage) {
       window.location.href = blogPage;
     }
-
 
     // Update every second
     setInterval(updateDateTime, 1000);
