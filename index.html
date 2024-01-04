@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>My World</title>
+  <title>Smedia</title>
   <style>
     body {
       margin: 0;
@@ -67,21 +67,58 @@
     .button:hover {
       background: #333;
     }
+
+    /* Mobile responsiveness */
+    @media screen and (max-width: 600px) {
+      #centerText {
+        font-size: 40px;
+        margin-top: 10vh;
+      }
+
+      #dateTime {
+        font-size: 18px;
+      }
+
+      #bottomButtons {
+        flex-direction: column;
+        align-items: center;
+      }
+
+      .button {
+        margin-top: 10px;
+      }
+    }
+
+    /* Notice bar styling */
+    #noticeBar {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 200px; /* Adjust width as needed */
+      padding: 10px;
+      background-color: #333;
+      color: #fff;
+      border-bottom-right-radius: 15px;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+    }
   </style>
 </head>
 <body>
 
-  <div id="centerText">My World</div>
+  <div id="noticeBar">
+    <!-- Add your dynamic text here or change it later in the code -->
+    File, Photos and Videos button is down for server issue.
+  </div>
+
+  <div id="centerText">Smedia</div>
 
   <div id="dateTime"></div>
 
   <div id="bottomButtons">
-    <!-- Add an onclick event to the "File" button -->
-    <button class="button" onclick="openFilePage()">File</button>
-    <button class="button">Blogs</button>
+    <button class="button" onclick="openFilePage('#')">File</button>
+    <button class="button" onclick="openBlogPage('blog.html')">Blogs</button>
     <button class="button">Video</button>
     <button class="button">Image</button>
-    <button class="button">Txt</button>
   </div>
 
   <script>
@@ -96,10 +133,14 @@
       dateTimeElement.innerHTML = `${dateStr}<br>${dayStr}<br>${timeStr}`;
     }
 
-    // Function to open the "file.html" page
-    function openFilePage() {
-      window.location.href = 'file.html';
+    function openFilePage(page) {
+      window.location.href = page;
     }
+
+    function openBlogPage(blogPage) {
+      window.location.href = blogPage;
+    }
+
 
     // Update every second
     setInterval(updateDateTime, 1000);

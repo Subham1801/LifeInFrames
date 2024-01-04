@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=San+Francisco&display=swap">
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            background: url('img.jpg') no-repeat center center fixed;
+            background-size: cover;
+            font-family: 'San Francisco', 'Apple SD Gothic Neo', sans-serif; /* Fallback font included */
+            overflow-x: hidden; /* Remove horizontal scrollbar */
+        }
+
+        header {
+            text-align: center;
+            padding: 20px;
+            background-color: rgba(255, 255, 255, 0.7); /* Adjust the opacity as needed */
+        }
+
+        .blog-container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-evenly;
+            padding: 20px;
+            padding-top: 0; /* Remove top padding */
+        }
+
+        .blog {
+            width: 200px;
+            height: 100px;
+            margin: 10px;
+            padding: 15px;
+            background-color: rgba(255, 255, 255, 0.7); /* Adjust the opacity as needed */
+            overflow: hidden;
+            cursor: pointer;
+            transition: transform 0.3s, width 0.5s, height 0.5s, border-radius 0.5s;
+            border-radius: 10px;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+
+        .blog h2 {
+            font-size: 1.2em;
+            margin-bottom: 10px;
+        }
+
+        .blog p {
+            font-size: 0.9em;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            white-space: pre-wrap; /* Preserve spaces and line breaks */
+        }
+
+        .read-button {
+            cursor: pointer;
+            background-color: #3498db;
+            color: #fff;
+            border: none;
+            padding: 8px 12px;
+            border-radius: 5px;
+        }
+
+        .expanded {
+            width: 400px;
+            height: 200px;
+            border-radius: 20px;
+            overflow: auto;
+        }
+
+        .expanded-content {
+            padding: 15px;
+        }
+
+        .expanded h2 {
+            font-size: 1.8em;
+            margin-bottom: 10px;
+        }
+
+        .close-button {
+            cursor: pointer;
+            background-color: #e74c3c;
+            color: #fff;
+            border: none;
+            padding: 8px 12px;
+            border-radius: 5px;
+        }
+
+        @media only screen and (max-width: 600px) {
+            .blog {
+                width: 90%;
+            }
+
+            .expanded {
+                width: 90%;
+            }
+        }
+    </style>
+    <title>Blog</title>
+</head>
+<body>
+    <header>
+        <h1> My Blog</h1>
+    </header>
+    
+    <div class="blog-container">
+        <!-- Replace the following code with your actual blog content -->
+        <div class="blog" id="b1">
+            <h2>Blog Title 1</h2>
+            <button class="read-button" onclick="expandBlog('b1')">Read</button>
+            <div class="expanded-content" style="display: none;">
+                <p>Your blog content here. Add more content to see how it preserves spaces and line breaks.</p>
+                <button class="close-button" onclick="closeBlog('b1')">Close</button>
+            </div>
+        </div>
+        
+        <div class="blog" id="b2">
+            <h2>Blog Title 2</h2>
+            <button class="read-button" onclick="expandBlog('b2')">Read</button>
+            <div class="expanded-content" style="display: none;">
+                <p>Your blog content here. Add more content to see how it preserves spaces and line breaks.</p>
+                <button class="close-button" onclick="closeBlog('b2')">Close</button>
+            </div>
+        </div>
+
+        <div class="blog" id="b3">
+            <h2>Blog Title 1</h2>
+            <button class="read-button" onclick="expandBlog('b3')">Read</button>
+            <div class="expanded-content" style="display: none;">
+                <p>Your blog content here. Add more content to see how it preserves spaces and line breaks.</p>
+                <button class="close-button" onclick="closeBlog('b3')">Close</button>
+            </div>
+        </div>
+
+        <div class="blog" id="b4">
+            <h2>Blog Title 1</h2>
+            <button class="read-button" onclick="expandBlog('b4')">Read</button>
+            <div class="expanded-content" style="display: none;">
+                <p>Your blog content here. Add more content to see how it preserves spaces and line breaks.</p>
+                <button class="close-button" onclick="closeBlog('b4')">Close</button>
+            </div>
+        </div>
+
+            <div class="blog" id="b5">
+            <h2>Blog Title 1</h2>
+            <button class="read-button" onclick="expandBlog('b5')">Read</button>
+            <div class="expanded-content" style="display: none;">
+                <p>Your blog content here. Add more content to see how it preserves spaces and line breaks.</p>
+                <button class="close-button" onclick="closeBlog('b5')">Close</button>
+            </div>
+        </div>
+        
+       
+    </div>
+
+    <script>
+        function expandBlog(blogId) {
+            document.getElementById(blogId).classList.add('expanded');
+            document.getElementById(blogId).getElementsByClassName('expanded-content')[0].style.display = 'block';
+        }
+
+        function closeBlog(blogId) {
+            document.getElementById(blogId).classList.remove('expanded');
+            document.getElementById(blogId).getElementsByClassName('expanded-content')[0].style.display = 'none';
+        }
+    </script>
+</body>
+</html>
