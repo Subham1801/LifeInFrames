@@ -89,6 +89,22 @@
             border-radius: 5px;
         }
 
+           .like-button {
+            cursor: pointer;
+            background-color: #2ecc71;
+            color: #fff;
+            border: none;
+            padding: 5px;
+            border-radius: 50%;
+            margin-right: 5px; /* Adjust as needed */
+        }
+
+        .like-counter {
+            font-size: 0.8em;
+            margin-left: 5px;
+        }
+
+
         @media only screen and (max-width: 600px) {
             .blog {
                 width: 90%;
@@ -113,7 +129,8 @@
             <h2>Friend or Foe ?</h2>
             <button class="read-button" onclick="expandBlog('b1')">Read</button>
             <div class="expanded-content" style="display: none;">
-                <p>
+                <p>Posted on: January 4, 2024
+
 <b>Introduction:</b>
 
 Friendship, often described as the cornerstone of human connection, is a profound and enriching aspect of our lives. As social beings, we crave companionship, understanding, and support, and true friends can provide these in abundance. In the tapestry of life, friendships weave a beautiful pattern of shared experiences, laughter, and the comfort of knowing that someone has your back. However, like any relationship, friendships can also face challenges, such as betrayal. In this blog, we explore the essence of genuine friendship, the impact of betrayal, and the fortune of having friends who stand the test of time.
@@ -149,7 +166,9 @@ Friendship, with its highs and lows, is a tapestry of experiences that shape our
             <h2>Three Mistakes of my Life</h2>
             <button class="read-button" onclick="expandBlog('b2')">Read</button>
             <div class="expanded-content" style="display: none;">
-                <p><b>Introduction:</b>
+                <p>Posted on: January 4, 2024
+
+<b>Introduction:</b>
 
 Life's journey is a continual evolution, marked by experiences that shape our understanding and approach. As I reflect on my own path, three pivotal mistakes stand out, each contributing to the evolving narrative of my life.
 
@@ -178,7 +197,9 @@ In acknowledging these mistakes, I embrace the evolution of my wisdom. Each miss
             <h2>Dreams Come True with Hard Work.?</h2>
             <button class="read-button" onclick="expandBlog('b3')">Read</button>
             <div class="expanded-content" style="display: none;">
-                <p><b>Introduction:</b>
+                <p>Posted on: January 4, 2024
+                    
+<b>Introduction:</b>
 
 Dreams are the seeds of our aspirations, but their transformation into reality requires more than mere wishful thinking. In this blog, we delve into the profound truth that dreams, those shimmering beacons of our desires, only come to fruition through the unwavering commitment and tenacity of hard work.
 
@@ -215,7 +236,9 @@ Dreams, no matter how grand, remain confined to the realm of fantasy without the
             <h2>Depression, Mental Health, Loneliness</h2>
             <button class="read-button" onclick="expandBlog('b4')">Read</button>
             <div class="expanded-content" style="display: none;">
-                <p><b>Introduction:</b>
+                <p>Posted on: January 4, 2024
+
+<b>Introduction:</b>
 
 In the often-muted discourse surrounding mental health, depression, loneliness, and the grim reality of suicide stand as somber reminders of the urgent need for collective awareness and action. As we delve into this complex narrative, our aim is not only to empathize but also to confront the harsh statistics that highlight the gravity of the situation.
 
@@ -263,6 +286,18 @@ In confronting the stark reality of depression, loneliness, and the tragic impac
             document.getElementById(blogId).classList.remove('expanded');
             document.getElementById(blogId).getElementsByClassName('expanded-content')[0].style.display = 'none';
         }
+
+        window.addEventListener('click', function (event) {
+            var expandedBlogs = document.querySelectorAll('.expanded');
+            expandedBlogs.forEach(function (blog) {
+                if (!blog.contains(event.target)) {
+                    blog.classList.remove('expanded');
+                    blog.getElementsByClassName('expanded-content')[0].style.display = 'none';
+                }
+            });
+        });
+
+
     </script>
 </body>
 </html>

@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
   <title>Life In Frames</title>
   <style>
     body {
@@ -16,6 +16,7 @@
       height: 100vh;
       color: #fff;
       font-family: 'Arial', sans-serif;
+      overflow-y: auto;
     }
 
     #centerText {
@@ -72,18 +73,21 @@
       background: rgba(0, 0, 0, 0.9);
     }
 
-    .button {
+      .button {
       padding: 10px;
       color: #fff;
       background: #000;
       border: none;
       cursor: pointer;
-      transition: background 0.3s;
+      transition: background 0.3s, transform 0.3s;
+      border-radius: 10px; /* Add border-radius for curved edges */
     }
 
-    .button:hover {
+      .button:hover {
       background: #333;
+      transform: scale(1.1); /* Add zoom-in effect on hover */
     }
+
 
     /* Mobile responsiveness */
     @media screen and (max-width: 600px) {
@@ -107,10 +111,12 @@
       #bottomButtons {
         flex-direction: column;
         align-items: center;
+         margin-bottom: 20px;
       }
 
       .button {
         margin-top: 10px;
+        width: 80%; 
       }
     }
 
@@ -132,7 +138,7 @@
 
   <div id="noticeBar">
     <!-- Add your dynamic text here or change it later in the code -->
-    File, Photos and Videos buttons are down due to server issue.
+    File and Photos button is down due to server issue.
   </div>
 
   <div id="centerText">
@@ -146,7 +152,7 @@
   <div id="bottomButtons">
     <button class="button" onclick="openFilePage('#')">File</button>
     <button class="button" onclick="openBlogPage('blog.html')">Blogs</button>
-    <button class="button">Videos</button>
+    <button class="button" onclick="openBlogPage('about.html')">About</button>
     <button class="button">Images</button>
   </div>
 
