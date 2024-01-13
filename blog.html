@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=San+Francisco&display=swap">
+    <link rel="stylesheet" href="https://static.addtoany.com/menu/page.css">
     <style>
         body {
             margin: 0;
@@ -26,6 +27,13 @@
             justify-content: space-evenly;
             padding: 20px;
             padding-top: 0; /* Remove top padding */
+        }
+
+        .share-button-container {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            z-index: 1000;
         }
 
         .blog {
@@ -89,20 +97,14 @@
             border-radius: 5px;
         }
 
-           .like-button {
-            cursor: pointer;
-            background-color: #2ecc71;
-            color: #fff;
-            border: none;
-            padding: 5px;
-            border-radius: 50%;
-            margin-right: 5px; /* Adjust as needed */
-        }
-
-        .like-counter {
-            font-size: 0.8em;
-            margin-left: 5px;
-        }
+#preloader {
+      background: #000 url(pre.gif) no-repeat center;
+      background-size: 60%;
+      height: 100vh;
+      width: 100%;
+      position: fixed;
+      z-index: 100%;
+    }
 
 
         @media only screen and (max-width: 600px) {
@@ -121,7 +123,25 @@
 <body>
     <header>
         <h1> My Blogs</h1>
+
+         <div class="share-button-container">
+            <div class="a2a_kit a2a_kit_size_32 a2a_default_style" data-a2a-url="https://subham1801.github.io/LifeInFrames/blog.html" data-a2a-title="Life In Frames">
+                <a class="a2a_dd" href="https://www.addtoany.com/share"></a>
+                <a class="a2a_button_whatsapp"></a>
+                <a class="a2a_button_x"></a>
+                
+                <a class="a2a_button_snapchat"></a>
+               
+                <a class="a2a_button_facebook_messenger"></a>
+                <a class="a2a_button_telegram"></a>
+              
+                <a class="a2a_button_google_gmail"></a>
+               
+            </div>
+        </div>
     </header>
+
+    <div id="preloader"></div>
     
     <div class="blog-container">
         <!-- Replace the following code with your actual blog content -->
@@ -299,5 +319,19 @@ In confronting the stark reality of depression, loneliness, and the tragic impac
 
 
     </script>
+
+     <script>
+        var a2a_config = a2a_config || {};
+        a2a_config.num_services = 2;
+    </script>
+    <script async src="https://static.addtoany.com/menu/page.js"></script>
+
+    <script>
+    var loader = document.getElementById("preloader") ;
+
+    window.addEventListener("load", function(){
+      loader.style.display = "none";
+    })
+  </script>
 </body>
 </html>

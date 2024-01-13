@@ -51,9 +51,21 @@
             display: flex;
             justify-content: center;
         }
+
+        #preloader {
+      background: #000 url(pre.gif) no-repeat center;
+      background-size: 60%;
+      height: 100vh;
+      width: 100%;
+      position: fixed;
+      z-index: 100%;
+    }
     </style>
 </head>
 <body>
+    <div id="preloader">
+  
+</div>
 
     <div id="cloud-text">Cloud</div>
 
@@ -69,6 +81,14 @@
             window.open(filePath, '_blank');
         }
     </script>
+
+    <script>
+    var loader = document.getElementById("preloader") ;
+
+    window.addEventListener("load", function(){
+      loader.style.display = "none";
+    })
+  </script>
 
 </body>
 </html>
